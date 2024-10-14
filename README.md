@@ -67,7 +67,7 @@ type rateLimiter interface {
 
 Each algorithm used in this project implements this interface. 
 
-#### ~algorithm~.go 
+#### _algorithm_.go 
 
 These files contain the logic for respective rate limiting algorithms. Note that all implementations are thread safe. 
 
