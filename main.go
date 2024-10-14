@@ -1,14 +1,14 @@
 package main
 
 import (
-	"codemill/go/ratelimiter/fixedwindow"
-	"codemill/go/ratelimiter/slidingwindow"
-	"codemill/go/ratelimiter/swcounter"
-	"codemill/go/ratelimiter/tokenbucket"
 	"flag"
 	"fmt"
 	"log"
 	"net/http"
+	"ratelimiter/fixedwindow"
+	"ratelimiter/slidingwindow"
+	"ratelimiter/swcounter"
+	"ratelimiter/tokenbucket"
 	"strings"
 )
 
@@ -29,7 +29,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if request == "unlimited" {
 		fmt.Fprintf(w, "Unlimited! Let's Go!\n")
 	} else if request == "limited" {
-
 		// RemoteAddr contains host:port
 		ip := r.RemoteAddr
 		lastColonIndex := strings.LastIndex(ip, ":")

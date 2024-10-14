@@ -1,3 +1,3 @@
-module codemill/go/ratelimiter
+module ratelimiter
 
 go 1.22.5
