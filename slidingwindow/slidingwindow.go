@@ -28,8 +28,8 @@ type RateLimiter struct {
 func NewRateLimiter() *RateLimiter {
 
 	rl := &RateLimiter{myWindow: slidingWindow{data: make(map[string][]time.Time)},
-		windowSize:      10 * time.Second,
-		maxReqPerWindow: 20}
+		windowSize:      30 * time.Second,
+		maxReqPerWindow: 60}
 	return rl
 }
 

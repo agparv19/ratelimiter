@@ -77,7 +77,7 @@ func (rl *RateLimiter) LimitExceeded(ip string) bool {
 	} else {
 		// no more tokens available, can not
 		// process this request!
-		log.Printf("Rejecting request from %v, received %v requests already in current window!\n", ip, rl.tokenCap)
+		log.Printf("Rejecting request from %v, received %v requests already!\n", ip, rl.tokenCap)
 		limitExceeded = true
 	}
 	rl.myTokenBucket.mu.Unlock()

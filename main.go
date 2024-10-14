@@ -3,6 +3,7 @@ package main
 import (
 	"codemill/go/ratelimiter/fixedwindow"
 	"codemill/go/ratelimiter/slidingwindow"
+	"codemill/go/ratelimiter/swcounter"
 	"codemill/go/ratelimiter/tokenbucket"
 	"flag"
 	"fmt"
@@ -12,6 +13,7 @@ import (
 )
 
 // Problem statement: https://codingchallenges.fyi/challenges/challenge-rate-limiter
+// Helpful article on rate limiting: https://blog.cloudflare.com/counting-things-a-lot-of-different-things/
 
 type rateLimiter interface {
 	// returns true if the given ip has exceeded
@@ -57,6 +59,8 @@ func main() {
 		myRateLimiter = fixedwindow.NewRateLimiter()
 	} else if *limiterAlgo == "slidingwindow" {
 		myRateLimiter = slidingwindow.NewRateLimiter()
+	} else if *limiterAlgo == "swcounter" {
+		myRateLimiter = swcounter.NewRateLimiter()
 	} else {
 		log.Fatalf("Unsupported rate limiter algorithm: %v", *limiterAlgo)
 	}
